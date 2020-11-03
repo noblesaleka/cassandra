@@ -1,0 +1,83 @@
+[
+   {
+      "model": "products.Category",
+      "pk": 1,
+      "fields": {
+         "name": "abstract",
+         "friendly_name": "abstract",
+         "image": "abstract.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 2,
+      "fields": {
+         "name": "animals",
+         "friendly_name": "animals",
+         "image": "animals.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 3,
+      "fields": {
+         "name": "building",
+         "friendly_name": "building",
+         "image": "building.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 4,
+      "fields": {
+         "name": "food",
+         "friendly_name": "food",
+         "image": "food.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 5,
+      "fields": {
+         "name": "interior",
+         "friendly_name": "interior",
+         "image": "interior.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 6,
+      "fields": {
+         "name": "nature",
+         "friendly_name": "nature",
+         "image": "nature.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 7,
+      "fields": {
+         "name": "people",
+         "friendly_name": "people",
+         "image": "people.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 8,
+      "fields": {
+         "name": "technology",
+         "friendly_name": "technology",
+         "image": "technology.jpg"
+      }
+   },
+   {
+      "model": "products.Category",
+      "pk": 9,
+      "fields": {
+         "name": "transportation",
+         "friendly_name": "transportation",
+         "image": "transportation.jpg"
+      }
+   }
+]
