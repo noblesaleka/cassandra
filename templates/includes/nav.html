@@ -1,0 +1,68 @@
+<div class="d-block">
+   <div class="d-none">
+      <nav id="main-nav">
+         <ul>
+         <li>
+            <a href="{% url 'home' %}" class="a-menu-link underline-black d-inline-block">Home</a>
+         </li>
+         <li>
+            <a href="" class="a-menu-link underline-black d-inline-block">Explore</a>
+         </li>
+         <li>
+            <a href="" class="a-menu-link underline-black d-inline-block">Upload</a>
+         </li>
+         <li>
+            <a href="" class="a-menu-link underline-black d-inline-block">Join</a>
+         </li>
+         </ul>
+      </nav>
+   </div>
+   <div class="fixed-nav bg-menu ">
+      <div class="c-container-nav" id="nav-bg">
+         <div class="row mx-auto">
+            <div class="col-12 px-0">
+               <div class="div-main-menu-mobile">
+                  <div class="div-menu-mobile-left d-none d-lg-flex">
+                     <p class="mb-0">
+                        <a href="{% url 'home' %}">
+                        <img src="{{ MEDIA_URL }}cassandra-logo-nav-white.png" class="img-nav-logo-cass" id="nav-logo" alt="Cassandra Logo">
+                        </a>
+                     </p>
+                     <nav id="" style="position:absolute; right:0; z-index: 99;" class="d-none d-lg-inline-block">
+                        <ul style="float:right;">
+                        <li class="d-inline-block">
+                           <a href="{% url 'home' %}" class="b-menu-link d-inline-block fs11rem " id="Home-link" style="" >Home</a>
+                        </li>
+                        <li class="d-inline-block">
+                           <a href="" class="b-menu-link d-inline-block fs11rem " id="Home-link" style="" >Explore</a>
+                        </li>
+                        <li class="d-inline-block">
+                           <a href="" class="b-menu-link d-inline-block fs11rem " id="Home-link" style="" >Upload</a>
+                        </li>
+                        <li class="d-inline-block">
+                           <a href="" class="b-menu-link d-inline-block fs11rem " id="Home-link" style="" >Join</a>
+                        </li>
+                        </ul>
+                     </nav>
+                  </div>
+                  <div class="div-menu-mobile-center d-flex ">
+                     <p class="mb-0">
+                        <a href="{% url 'home' %}">
+                           <picture>
+                              <source media="(max-width: 992px)" srcset="{{ MEDIA_URL }}cassandra-logo-nav-white.png">
+                              <img class="d-block d-lg-none img-nav-logo-cass" src="{{ MEDIA_URL }}cassandra-logo-nav-white.png" id="nav-logo-mobile" alt="Cassandra Logo">
+                           </picture>
+                        </a>
+                     </p>
+                  </div>
+                  <div class="drop-down div-menu-mobile-right d-block d-lg-none">
+                     <div class="div-mobile-line"></div>
+                     <div class="div-mobile-line"></div>
+                     <div class="div-mobile-line-2"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

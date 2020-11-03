@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container-fluid px-0">
+        <div class="row no-gutters  align-items-center">
+            <div class="col-12 text-center">
+                <div class="position-relative vh-100 bg-cover search-header" >
+                    <div class="h-75 middle-container">
+                        <h2 class="f-white fs30rem">A picture is worth a thousand words...</h2>
+                        <form method="GET" action="">
+                            <div class="input-group w-50 mx-auto">
+                                <input class="form-control border border-black rounded-0 fs20rem" type="text" name="q" placeholder="Search for photos">
+                                <div class="input-group-append">
+                                    <button class="form-control btn btn-black border border-black rounded-0 fs20rem" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+   
+    
+
+
+
+
+    </div>
+{% endblock %}
