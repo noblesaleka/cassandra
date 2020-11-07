@@ -3,8 +3,8 @@ html {
 }
 
 body {
-    background: url('/media/a-thousand-word.png') no-repeat center center fixed;
-    background-size: cover;
+    /* background: url('/media/pexels-pixabay-236302.jpg') no-repeat center center fixed;
+    background-size: cover; */
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Raleway', sans-serif;
@@ -13,7 +13,7 @@ body {
 .home-search-bar {
     background: url('/media/storm2.png') no-repeat right bottom fixed;
     background-size: cover;
-    height:400px;
+    height: 400px;
 }
 
 /* .search-header {
@@ -29,363 +29,372 @@ body {
 *                                                              *
 ***************************************************************/
 html {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .fs01rem {
-  font-size: 0.1rem;
+    font-size: 0.1rem;
 }
+
 .fs02rem {
-  font-size: 0.2rem;
+    font-size: 0.2rem;
 }
+
 .fs03rem {
-  font-size: 0.3rem;
+    font-size: 0.3rem;
 }
+
 .fs04rem {
-  font-size: 0.4rem;
+    font-size: 0.4rem;
 }
 
 .fs05rem {
-  font-size: 0.5rem;
+    font-size: 0.5rem;
 }
 
 .fs06rem {
-  font-size: 0.6rem;
+    font-size: 0.6rem;
 }
 
 .fs07rem {
-  font-size: 0.7rem;
+    font-size: 0.7rem;
 }
 
 .fs08rem {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .fs09rem {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
 
 .fs10rem {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .fs11rem {
-  font-size: 1.1rem;
+    font-size: 1.1rem;
 }
 
 .fs12rem {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .fs13rem {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
 .fs14rem {
-  font-size: 1.4rem;
+    font-size: 1.4rem;
 }
 
 .fs15rem {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .fs16rem {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 
 .fs17rem {
-  font-size: 1.7rem;
+    font-size: 1.7rem;
 }
 
 .fs18rem {
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .fs19rem {
-  font-size: 1.9rem;
+    font-size: 1.9rem;
 }
 
 .fs20rem {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 .fs21rem {
-  font-size: 2.1rem;
+    font-size: 2.1rem;
 }
 
 .fs22rem {
-  font-size: 2.2rem;
+    font-size: 2.2rem;
 }
 
 .fs23rem {
-  font-size: 2.3rem;
+    font-size: 2.3rem;
 }
 
 .fs24rem {
-  font-size: 2.4rem;
+    font-size: 2.4rem;
 }
 
 .fs25rem {
-  font-size: 2.5rem;
+    font-size: 2.5rem;
 }
 
 .fs26rem {
-  font-size: 2.6rem;
+    font-size: 2.6rem;
 }
 
 .fs27rem {
-  font-size: 2.7rem;
+    font-size: 2.7rem;
 }
 
 .fs28rem {
-  font-size: 2.8rem;
+    font-size: 2.8rem;
 }
 
 .fs29rem {
-  font-size: 2.9rem;
+    font-size: 2.9rem;
 }
 
 .fs30rem {
-  font-size: 3rem;
+    font-size: 3rem;
 }
 
 .fs31rem {
-  font-size: 3.1rem;
+    font-size: 3.1rem;
 }
 
 .fs32rem {
-  font-size: 3.2rem;
+    font-size: 3.2rem;
 }
 
 .fs33rem {
-  font-size: 3.3rem;
+    font-size: 3.3rem;
 }
 
 .fs34rem {
-  font-size: 3.4rem;
+    font-size: 3.4rem;
 }
 
 .fs35rem {
-  font-size: 3.5rem;
+    font-size: 3.5rem;
 }
 
 .fs36rem {
-  font-size: 3.6rem;
+    font-size: 3.6rem;
 }
 
 .fs37rem {
-  font-size: 3.7rem;
+    font-size: 3.7rem;
 }
 
 .fs38rem {
-  font-size: 3.8rem;
+    font-size: 3.8rem;
 }
 
 .fs39rem {
-  font-size: 3.9rem;
+    font-size: 3.9rem;
 }
 
 .fs40rem {
-  font-size: 4rem;
+    font-size: 4rem;
 }
 
 .fs41rem {
-  font-size: 4.1rem;
+    font-size: 4.1rem;
 }
 
 .fs42rem {
-  font-size: 4.2rem;
+    font-size: 4.2rem;
 }
 
 .fs43rem {
-  font-size: 4.3rem;
+    font-size: 4.3rem;
 }
 
 .fs44rem {
-  font-size: 4.4rem;
+    font-size: 4.4rem;
 }
 
 .fs45rem {
-  font-size: 4.5rem;
+    font-size: 4.5rem;
 }
 
 .fs46rem {
-  font-size: 4.6rem;
+    font-size: 4.6rem;
 }
 
 .fs47rem {
-  font-size: 4.7rem;
+    font-size: 4.7rem;
 }
 
 .fs48rem {
-  font-size: 4.8rem;
+    font-size: 4.8rem;
 }
 
 .fs49rem {
-  font-size: 4.9rem;
+    font-size: 4.9rem;
 }
 
 .fs50rem {
-  font-size: 5rem;
+    font-size: 5rem;
 }
 
 .fs51rem {
-  font-size: 5.1rem;
+    font-size: 5.1rem;
 }
 
 .fs52rem {
-  font-size: 5.2rem;
+    font-size: 5.2rem;
 }
 
 .fs53rem {
-  font-size: 5.3rem;
+    font-size: 5.3rem;
 }
 
 .fs54rem {
-  font-size: 5.4rem;
+    font-size: 5.4rem;
 }
 
 .fs55rem {
-  font-size: 5.5rem;
+    font-size: 5.5rem;
 }
 
 .fs56rem {
-  font-size: 5.6rem;
+    font-size: 5.6rem;
 }
 
 .fs57rem {
-  font-size: 5.7rem;
+    font-size: 5.7rem;
 }
 
 .fs58rem {
-  font-size: 5.8rem;
+    font-size: 5.8rem;
 }
 
 .fs59rem {
-  font-size: 5.9rem;
+    font-size: 5.9rem;
 }
 
 .fs60rem {
-  font-size: 6rem;
+    font-size: 6rem;
 }
 
 .fs61rem {
-  font-size: 6.1rem;
+    font-size: 6.1rem;
 }
 
 .fs62rem {
-  font-size: 6.2rem;
+    font-size: 6.2rem;
 }
 
 .fs63rem {
-  font-size: 6.3rem;
+    font-size: 6.3rem;
 }
 
 .fs64rem {
-  font-size: 6.4rem;
+    font-size: 6.4rem;
 }
 
 .fs65rem {
-  font-size: 6.5rem;
+    font-size: 6.5rem;
 }
 
 .fs66rem {
-  font-size: 6.6rem;
+    font-size: 6.6rem;
 }
 
 .fs67rem {
-  font-size: 6.7rem;
+    font-size: 6.7rem;
 }
 
 .fs68rem {
-  font-size: 6.8rem;
+    font-size: 6.8rem;
 }
 
 .fs69rem {
-  font-size: 6.9rem;
+    font-size: 6.9rem;
 }
 
 .fs70rem {
-  font-size: 7.0rem;
+    font-size: 7.0rem;
 }
 
 .fs71rem {
-  font-size: 7.1rem;
+    font-size: 7.1rem;
 }
 
 .fs72rem {
-  font-size: 7.2rem;
+    font-size: 7.2rem;
 }
 
 .fs73rem {
-  font-size: 7.3rem;
+    font-size: 7.3rem;
 }
 
 .fs74rem {
-  font-size: 7.4rem;
+    font-size: 7.4rem;
 }
 
 .fs75rem {
-  font-size: 7.5rem;
+    font-size: 7.5rem;
 }
 
 .fs76rem {
-  font-size: 7.6rem;
+    font-size: 7.6rem;
 }
 
 .fs77rem {
-  font-size: 7.7rem;
+    font-size: 7.7rem;
 }
 
 .fs78rem {
-  font-size: 7.8rem;
+    font-size: 7.8rem;
 }
 
 .fs79rem {
-  font-size: 7.9rem;
+    font-size: 7.9rem;
 }
 
 .fs80rem {
-  font-size: 8.0rem;
+    font-size: 8.0rem;
 }
 
 .fw100 {
-  font-weight: 100;
+    font-weight: 100;
 }
+
 .fw200 {
-  font-weight: 200;
+    font-weight: 200;
 }
+
 .fw300 {
-  font-weight: 300;
+    font-weight: 300;
 }
+
 .fw400 {
-  font-weight: 400;
+    font-weight: 400;
 }
+
 .fw500 {
-  font-weight: 500;
+    font-weight: 500;
 }
+
 .fw600 {
-  font-weight: 600;
+    font-weight: 600;
 }
+
 .fw700 {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .f-white {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 .f-red {
-  color: #e71d33 !important;
+    color: #e71d33 !important;
 }
 
 .f-black {
-  color: #000 !important;
+    color: #000 !important;
 }
 
 .f-bold {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 /***************************************************************
@@ -396,30 +405,42 @@ html {
 *                                                              *
 ***************************************************************/
 .c-container-nav {
-  width: 100%;
-  padding: 0px 10%;
-  margin-left: auto;
-  margin-right: auto;
+    width: 100%;
+    padding: 0px 10%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.c-container-footer  {
-  width: 100%;
-  padding: 0px 5%;
-  margin-left: auto;
-  margin-right: auto;
+.c-container-footer {
+    width: 100%;
+    padding: 0px 5%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .c-container {
-  width: 100%;
-  padding: 0px 10%;
-  margin-left: auto;
-  margin-right: auto;
+    width: 100%;
+    padding: 0px 10%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .middle-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vh-80 {
+    height: 80vh !important;
+}
+
+.home-search-jumbotron {
+    background: url('/media/pexels-pixabay-236302.jpg') no-repeat top center fixed;
+    background-size: cover;
+    height: 80vh !important;
+    padding-top: 200px;
+
 }
 
 /***************************************************************
@@ -430,143 +451,156 @@ html {
 *                                                              *
 ***************************************************************/
 .img-nav-logo {
-  width: 200px;
+    width: 150px;
+}
+
+.search-form {
+    border-radius: 30px 0px 0px 30px;
+}
+
+.search-btn {
+    border-radius: 0px 30px 30px 0px;
+    cursor: pointer;
 }
 
 .badge {
-  padding-left: 9px;
-  padding-right: 9px;
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  border-radius: 9px;
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
 }
 
 .label-warning[href],
 .badge-warning[href] {
-  background-color: #c67605;
+    background-color: #c67605;
 }
+
 #lblCartCount {
     font-size: 12px;
     background: #ff0000;
     color: #fff;
     padding: 0 5px;
     vertical-align: top;
-    margin-left: -10px; 
+    margin-left: -10px;
 }
 
 .a-menu-link {
-  color: #000 !important;
-  font-family: 'Raleway', sans-serif;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  text-align: left !important;
-  padding: 10px 0px !important;
-  text-transform: unset !important;
-  transition: 0.3s !important;
-  text-transform: uppercase !important;
+    color: #000 !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    padding: 10px 0px !important;
+    text-transform: unset !important;
+    transition: 0.3s !important;
+    text-transform: uppercase !important;
 }
 
 .a-menu-link:hover {
-  color: #fff !important;
-  text-decoration: none;
-  transition: 0.3s !important;
+    color: #fff !important;
+    text-decoration: none;
+    transition: 0.3s !important;
 }
 
 .b-menu-link {
-  color: #fff;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700 !important;
-  text-align: left !important;
-  padding: 30px 30px !important;
-  text-transform: unset !important;
-  transition: 0.3s !important;
-  text-transform: uppercase !important;
+    color: #000;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700 !important;
+    text-align: left !important;
+    padding: 30px 30px !important;
+    text-transform: unset !important;
+    transition: 0.3s !important;
+    text-transform: uppercase !important;
 }
 
 .b-menu-link:hover {
-  color: red !important;
-  text-decoration: none;
-  transition: 0.3s !important;
+    color: red !important;
+    text-decoration: none;
+    transition: 0.3s !important;
 }
 
-.underline-black{
-  position: relative;
+.underline-black {
+    position: relative;
 }
 
-.underline-black:after{
-  content: '';
-  position: absolute;
-  width: 0; height: 2px;
-  display: block;
-  margin-top: 0px;
-  right: 0;
-  background: #000;
-  transition: width .3s ease;
-  -webkit-transition: width .3s ease;
+.underline-black:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 0px;
+    right: 0;
+    background: #000;
+    transition: width .3s ease;
+    -webkit-transition: width .3s ease;
 }
 
-.underline-black:hover:after{
-  width: 100%;
-  left: 0;
-  background: #000;
+.underline-black:hover:after {
+    width: 100%;
+    left: 0;
+    background: #000;
 }
 
 .div-main-menu-mobile {
-  height: 100px;
+    height: 100px;
 }
 
 .div-menu-mobile-left {
-  display: flex;
-  height: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0;
-  float: left;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    float: left;
 }
 
 
 
 .div-menu-mobile-right {
-  height: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  margin: -65px 0px;
-  float: right;
-  cursor: pointer;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    margin: -65px 0px;
+    float: right;
+    cursor: pointer;
 }
 
 
 .div-menu-mobile-center {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 0 160px 0 0;
-  float: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 160px 0 0;
+    float: center;
 }
 
 .div-mobile-line {
-  width: 35px;
-  height: 5px;
-  background-color: #e71d33;
-  border-radius: 5px;
-  margin: 6px 0;
+    width: 35px;
+    height: 5px;
+    background-color: #e71d33;
+    border-radius: 5px;
+    margin: 6px 0;
 }
+
 .div-mobile-line-2 {
-  width: 27px;
-  height: 5px;
-  background-color: #e71d33;
-  border-radius: 5px;
-  margin: 6px 0;
-  transition: 0.2s;
+    width: 27px;
+    height: 5px;
+    background-color: #e71d33;
+    border-radius: 5px;
+    margin: 6px 0;
+    transition: 0.2s;
 }
+
 .div-mobile-line-2:hover {
-  width: 35px;
-  height: 5px;
-  background-color:#e71d33;
-  border-radius: 5px;
-  margin: 6px 0;
-  transition: 0.2s;
+    width: 35px;
+    height: 5px;
+    background-color: #e71d33;
+    border-radius: 5px;
+    margin: 6px 0;
+    transition: 0.2s;
 }
 
 /***************************************************************
@@ -577,9 +611,9 @@ html {
 *                                                              *
 ***************************************************************/
 
-.img-nav-logo-cass{
-  width: 200px;
-} 
+.img-nav-logo-cass {
+    width: 200px;
+}
 
 
 /* from Bulma */
@@ -606,7 +640,7 @@ html {
 }
 
 .cart-button {
-    padding-bottom:5px;
+    padding-bottom: 5px;
 }
 
 .join-now-button {
@@ -626,27 +660,27 @@ html {
 }
 
 .explore-now-button {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     color: #000;
     min-width: 60px;
-    
+
 }
 
 .explore-now-button:hover {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     color: #d90429;
     min-width: 60px;
 }
 
 .upload-now-button {
-    background:rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     color: #000;
     min-width: 60px;
-    
+
 }
 
 .upload-now-button:hover {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     color: #d90429;
     min-width: 60px;
 }
@@ -659,7 +693,8 @@ html {
 
 .btn-outline-black {
     background: white;
-    color: black !important; /* use important to override link colors for <a> elements */
+    color: black !important;
+    /* use important to override link colors for <a> elements */
     border: 1px solid black;
 }
 
@@ -692,17 +727,29 @@ html {
     background: #000 !important;
 }
 
-.overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: white;
-	z-index: -1;
+.bg-space-cadet {
+    background: #2b2d42 !important;
 }
 
-a.category-badge > span.badge:hover {
+.border-space-cadet {
+    border-color: #2b2d42 !important;
+}
+
+.f-space-cadet {
+    color: #2b2d42 !important;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+}
+
+a.category-badge>span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
 }
@@ -744,10 +791,10 @@ input[name='q']::placeholder {
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 4px solid transparent;
-    border-right: 4px solid transparent; 
+    border-right: 4px solid transparent;
     border-bottom: 10px solid black;
     position: absolute;
     top: -10px;
@@ -797,16 +844,18 @@ input[name='q']::placeholder {
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
+    .container {
+        max-width: 80%;
+    }
 }
 
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {
-    margin-top: 1.5rem; /* mt-4 */
-    color: #6c757d; /* text-secondary */
+    margin-top: 1.5rem;
+    /* mt-4 */
+    color: #6c757d;
+    /* text-secondary */
 }
 
 .allauth-form-inner-content input {
@@ -824,8 +873,8 @@ input[name='q']::placeholder {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* btn */
-	display: inline-block;
+    /* btn */
+    display: inline-block;
     font-weight: 400;
     color: #fff;
     text-align: center;
@@ -842,18 +891,19 @@ input[name='q']::placeholder {
     border-radius: 0;
 
     /* standard bootstrap btn transitions */
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
-	color: #fff;
+.allauth-form-inner-content input[type='submit']:hover {
+    color: #fff;
     background-color: #222;
     border-color: #222;
 }
 
 .allauth-form-inner-content a {
-	color: #17a2b8; /* text-info */
+    color: #17a2b8;
+    /* text-info */
 }
 
 /* Product Form */
@@ -896,21 +946,21 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding-top: 150px;
+        padding: 50px 0px 50px 0px;
     }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 50px;
+        padding: 50px 0px 50px 0px;
     }
 
     body {
         height: calc(100vh - 116px);
     }
 
-    .img-nav-logo-cass{
-      width:170px !important;
-      }
+    .img-nav-logo-cass {
+        width: 170px !important;
+    }
 }
