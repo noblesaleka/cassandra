@@ -443,6 +443,10 @@ html {
 
 }
 
+.product-detail-container {
+    padding: 150px 0px;
+}
+
 /***************************************************************
 *                                                              *
 *                                                              *
@@ -946,7 +950,7 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding: 50px 0px 50px 0px;
+        padding: 200px 0px 50px 0px;
     }
 }
 
