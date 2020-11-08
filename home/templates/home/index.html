@@ -34,9 +34,13 @@
                 {% for product in products %}
                 <div class="card p-3">
                     {% if product.image %}
-                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
                     {% else %}
-                    <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    </a>
                     {% endif %}
                 </div>
                 {% endfor %}
