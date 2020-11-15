@@ -689,6 +689,40 @@ html {
     min-width: 60px;
 }
 
+.main-button {
+    background: #2b2d42;
+    color: white;
+    min-width: 60px;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.main-button:hover {
+    background: #777BA6;
+    color: #fff;
+    min-width: 60px;
+}
+
+.main-button-invert {
+    background: white;
+    color: #2b2d42;
+    min-width: 60px;
+    border: 1px solid #2b2d42;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.main-button-invert:hover {
+    background: #fff;
+    color: #2b2d42;
+    font-weight: 600;
+    min-width: 60px;
+}
+
 
 .btn-black {
     background: black;
