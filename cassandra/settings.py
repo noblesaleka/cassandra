@@ -82,6 +82,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cassandra.wsgi.application'
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
