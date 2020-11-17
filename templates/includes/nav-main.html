@@ -29,7 +29,7 @@
 
                  {% if request.user.is_superuser %}
                  <li class="list-inline-item dropdown">
-                     <a class="explore-now-button btn rounded-0 " href="" id="upload">
+                     <a class="explore-now-button btn rounded-0 " href="{% url  'add_product' %}" id="upload">
                          <div class="text-center">
                              <p class="my-0 mr-5">Upload</p>
                          </div>
