@@ -23,7 +23,8 @@ This website is designed for the to be user focused allowing the user to really 
 
  A list of user Stories:
 
-<a href= "files/Conceptual design cassandra.pdf">Conceptual design pdf</a>
+<a href= "/Conceptual_database.pdf">Conceptual database design</a>
+<a href= "/Wireframe_Cassandra.jpeg">Wireframe</a>
 - As a user type, I want to perform an action, so that I can achieve a goal.
 - As a user I want to listen to buy photos
 - One photo many has many users to buy digital downloads
@@ -39,7 +40,7 @@ This section describes the different parts of my e-commerce digital download pla
 The all products page allows you to view a single photo or many photos and all the information related to that photo.
 The all photos page is simply the combination of all the photos from a broad variety of categories across the website, you can view our enitre library from this page. Also it allows for 
 filtering on a high level. Can use the search bar to filter your search results.
-The base page is the base template for the websites look and feel which was inspired by <a href= "https://www.chapters.indigo.ca/">Indigo</a>, and <a href= "https://www.chapters.indigo.ca/">Unsplash</a>.
+The base page is the base template for the websites look and feel which was inspired by <a href= "https://www.chapters.indigo.ca/">Indigo</a>, and <a href= "https://unsplash.com/">Unsplash</a>.
 The profile page contains the user registration information where they fill their personal information.
 The categories page is further broken down into several different genres that the user can further explore  including abstract, animals, building, food, nature and more.
 Users also have the option to purhcase an unlimited plan whereby they have access to unlimited downloads for a monthly fee of $10 USD.
@@ -116,7 +117,7 @@ Here is a list of bugs encountered and their solutions during the development pr
 
 3. error - index not found, caused by deleting incorrect columns
 
-4. error - major error server 500 in heroku - rolled back to previous checkpoint without functionalities.
+4. error - major error server 500 in heroku - rolled back to previous checkpoint without functionalities. Unable to correct the subscription piece in Heroku - rolled back to previous checkpoint to show working site with limited functionalities.
 
 
 ## Deployment
@@ -130,20 +131,21 @@ Process to deploy:
 
 ## Credits
 I would like to credit numerous cites for inspiration in ux design as I could 
-not have done this without inspiration and at times a little persperation. Cite 
+not have done this without inspiration and at times a little persperation. Site 
 used for application inspiration <a href="https://www.canva.com/">here.</a> 
 I would also like to credit the stackoverflow community for any methods and 
 code snippets used, it was a really awesome resource to roll up my sleeves and 
 learn on the website.
-I would also like to credit the Code Institue, which provided the basis of the logic and design.
+I would also like to credit the Code Institue, which provided the basis of the logic and design via Boutique Ado.
+I would also like to credit the Django Tutorial // Build a Video Subscription Website - JustDjango, which provided a lot of guidance to implement the membership portion of the site.
 ### Content
 - The text for all the paragraphs was inspired by:
 - https://www.chapters.indigo.ca/en-ca/
 
 ### Media
-- Unsplash
-- canva
-
+- <a href="https://unsplash.com/">Unsplash</a> 
+- <a href="https://www.canva.com/">Canva</a> 
+- <a href="https://www.pexels.com/">Pexels</a> 
 
 ### Acknowledgements
 
