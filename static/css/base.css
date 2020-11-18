@@ -1036,7 +1036,5 @@ input[name='q']::placeholder {
         font-size: .75rem;
     }
 
-    .increment-qty, .decrement-qty {
-        padding: .25rem .5rem !important;
-    }
+    
 }

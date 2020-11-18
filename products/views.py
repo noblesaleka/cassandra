@@ -6,6 +6,7 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category
 from .forms import ProductForm
+from membership.models import UserMembership
 
 # Create your views here.
 
@@ -13,11 +14,18 @@ def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    downloads = None
     query = None
     categories = None
     heading = 'All Products'
     sort = None
     direction = None
+    user_membership = UserMembership.objects.filter(user=request.user).first()
+    user_membership_type = user_membership.membership.membership_type
+    product_allowed_mem_types = Product.allowed_memberships
+
+    if (user_membership_type == product_allowed_mem_types):
+        downloads = True
 
     if request.GET:
         if 'sort' in request.GET:
@@ -52,6 +60,8 @@ def all_products(request):
             products = products.filter(queries)
             heading = 'Search Results'
 
+    
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -60,6 +70,10 @@ def all_products(request):
         'current_categories': categories,
         'heading': heading,
         'current_sorting': current_sorting,
+        'downloads': downloads,
+        'product_allowed_mem_types': product_allowed_mem_types,
+        'user_membership_type' : user_membership_type,
+
     }
 
     return render(request, 'products/products.html', context)
