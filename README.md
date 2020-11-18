@@ -116,6 +116,8 @@ Here is a list of bugs encountered and their solutions during the development pr
 
 3. error - index not found, caused by deleting incorrect columns
 
+4. error - major error server 500 in heroku - rolled back to previous checkpoint without functionalities.
+
 
 ## Deployment
 Process to deploy:
@@ -123,6 +125,8 @@ Process to deploy:
 - Different values for environment variables/Heroku Configuration varibales were set
 - Created requiremnent.txt and procfile in order to host on Heroku  platform
 - Deployed to Heroku server for final project viewing 
+- This project was deployed to GitHub. It can be accessed via this link: [https://github.com/noblesaleka/cassandra/settings]
+- This project was deployed to Heroku. It can be accessed via this link: [https://cassandra-django-milestone.herokuapp.com/]
 
 ## Credits
 I would like to credit numerous cites for inspiration in ux design as I could 
