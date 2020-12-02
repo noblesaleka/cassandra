@@ -58,9 +58,7 @@
                         <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                     </small>
                     {% endif %}
-                    {% if user_membership_type == product.allowed_memberships %}
-                    <a href="{{ product.image.url }}" download="{{ product.image.url }}">Download</a>
-                    {% endif %}
+
 
                 </div>
                 {% endfor %}
