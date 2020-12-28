@@ -131,6 +131,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+
     """
     Handle successful checkouts
     """
@@ -171,3 +172,17 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+# def checkout_membership(request):
+#     stripe_public_key = settings.STRIPE_PUBLIC_KEY
+#     stripe_secret_key = settings.STRIPE_SECRET_KEY
+#     stripe.api_key = stripe_secret_key
+#     payment_intent = stripe.PaymentIntent.create(
+#         amount = 9.99,
+#         currency = settings.STRIPE_CURRENCY,
+#     )
+
+#     context['secret_key'] = payment_intent.client_secret
+#     context['STRIPE_PUBLIC_KEY'] = settings.STRIPE_PUBLIC_KEY
+#     return render(request, 'something.html', context)

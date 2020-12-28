@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
+from products.models import Product
 
 from checkout.models import Order
 
@@ -52,5 +53,14 @@ def order_history(request, order_number):
 
 
 def membership(request):
-    """ A view to return the membership options page """
-    return render(request, 'profiles/membership.html')
+    products = Product.objects.all()
+    products = products.filter(category__name__icontains='membership')
+
+    context = {
+        'products': products,
+    }
+    return render(request, 'profiles/membership.html', context)
+
+# @require_POST
+# def payment_method(request):
+#     plan = request.POST.get('plan', 'm')
