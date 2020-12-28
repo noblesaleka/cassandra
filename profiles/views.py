@@ -7,6 +7,7 @@ from .forms import UserProfileForm
 from checkout.models import Order
 
 
+
 @login_required
 def profile(request):
     """ Display the user's profile. """
@@ -48,3 +49,8 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def membership(request):
+    """ A view to return the membership options page """
+    return render(request, 'profiles/membership.html')

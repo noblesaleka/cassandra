@@ -1,3 +1,3 @@
 from django.test import TestCase
+from profiles.models import UserProfile
 
-# Create your tests here.
