@@ -101,6 +101,10 @@
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     <!-- Pass the client secret to the view so we can get the payment intent id -->
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    {% for item in bag_items %}
+                    <input type="hidden" value="{{item.product.stripe_plan_id}}" name="stripe_plan_id">
+                    <input type="hidden" value="{{item.product.automatic}}" name="automatic">
+                    {% endfor %}
                 </fieldset>
 
                 <div class="submit-button text-right mt-5 mb-2">

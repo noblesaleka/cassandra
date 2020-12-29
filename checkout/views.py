@@ -50,12 +50,22 @@ def checkout(request):
             'province_or_state': request.POST['province_or_state'],
         }
         order_form = OrderForm(form_data)
+        stripe_plan_id = request.POST['stripe_plan_id']
+        automatic = request.POST['automatic']
+        
+        if (stripe_plan_id != 'n/a' and automatic != 'N'):
+            print(stripe_plan_id)
+            print(automatic)
+        else:
+            print('nada')
+
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
+            
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
