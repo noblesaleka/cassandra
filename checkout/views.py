@@ -52,10 +52,28 @@ def checkout(request):
         order_form = OrderForm(form_data)
         stripe_plan_id = request.POST['stripe_plan_id']
         automatic = request.POST['automatic']
+        payment_method_id = request.POST['payment_method_id']
         
         if (stripe_plan_id != 'n/a' and automatic != 'N'):
             print(stripe_plan_id)
             print(automatic)
+            print(payment_method_id)
+            # customer = stripe.Customer.create(
+            #     email = request.POST['email'],
+            #     payment_method_id = payment_method_id,
+            #     invoice_settings={
+            #         'default_payment_method': payment_method_id
+            #     }
+            # )
+            # stripe.Subscription.create(
+            #     customer = customer.id,
+            #     items = [
+            #         {
+            #             'plan': stripe_plan_id
+            #         },
+            #     ]
+
+            # )
         else:
             print('nada')
 
@@ -102,6 +120,7 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
+            payment_method_types=['card']
         )
 
         # Attempt to prefill the form with any info the user maintains in their profile
@@ -135,6 +154,7 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        
     }
 
     return render(request, template, context)

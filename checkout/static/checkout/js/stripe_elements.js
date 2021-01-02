@@ -48,9 +48,11 @@ card.addEventListener('change', function(event) {
 
 // Handle form submit
 var form = document.getElementById('payment-form');
+var hiddenInput = document.createElement('input');
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
+
     card.update({
         'disabled': true
     });
@@ -114,6 +116,10 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'payment_method_id');
+                    hiddenInput.setAttribute('value', result.paymentMethod);
+                    form.appendChild(hiddenInput)
                     form.submit();
                 }
             }
