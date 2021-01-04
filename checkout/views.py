@@ -52,13 +52,13 @@ def checkout(request):
         order_form = OrderForm(form_data)
         stripe_plan_id = request.POST['stripe_plan_id']
         automatic = request.POST['automatic']
-        payment_method_id = request.POST['payment_method_id']
+        # payment_method_id = request.POST['payment_method_id']
         # payment_intent_id = request.POST['payment_intent_id']
         
         if (stripe_plan_id != 'n/a' and automatic != 'N'):
             print(stripe_plan_id)
             print(automatic)
-            print(payment_method_id)
+            # print(payment_method_id)
             # customer = stripe.Customer.create(
             #     email = request.POST['email'],
             #     payment_method_id = payment_method_id,
