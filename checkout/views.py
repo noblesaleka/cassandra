@@ -53,6 +53,7 @@ def checkout(request):
         stripe_plan_id = request.POST['stripe_plan_id']
         automatic = request.POST['automatic']
         payment_method_id = request.POST['payment_method_id']
+        # payment_intent_id = request.POST['payment_intent_id']
         
         if (stripe_plan_id != 'n/a' and automatic != 'N'):
             print(stripe_plan_id)
