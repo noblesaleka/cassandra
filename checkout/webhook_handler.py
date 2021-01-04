@@ -10,6 +10,7 @@ from profiles.models import UserProfile
 import json
 import time
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -25,13 +26,12 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )       
+        )
 
     def handle_event(self, event):
         """
@@ -46,6 +46,7 @@ class StripeWH_Handler:
         Handle the payment_intent.succeeded webhook from Stripe
         """
         intent = event.data.object
+        # print(intent)
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
@@ -55,6 +56,22 @@ class StripeWH_Handler:
         grand_total = round(intent.charges.data[0].amount / 100, 2)
         payment_intent = intent.charges.data[0].payment_intent
         payment_method = intent.charges.data[0].payment_method
+
+        print(payment_intent, payment_method, '>>>>>>>>>>>>>>>><<<<')
+
+        #Create session for payment_intent and payment_method
+        # payment_info_items = []
+        # payment_info = request.session.get('payment_info', {})
+        
+        # for payment_intent, payment_method in payment_info.items():
+        #     payment_intent = intent.charges.data[0].payment_intent
+        #     payment_method = intent.charges.data[0].payment_method
+        #     payment_info_items.append({
+        #         'payment_intent': payment_intent,
+        #         'payment_method': payment_method,
+        #     })
+        #     print(payment_info_items)
+
 
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -93,6 +110,8 @@ class StripeWH_Handler:
                     grand_total=grand_total,
                     original_bag=bag,
                     stripe_pid=pid,
+                    payment_intent = payment_intent,
+                    payment_method = payment_method,
                 )
                 order_exists = True
                 break
@@ -120,6 +139,8 @@ class StripeWH_Handler:
                     province_or_state=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
+                    payment_intent=payment_intent,
+                    payment_method=payment_method,
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)

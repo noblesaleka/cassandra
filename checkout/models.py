@@ -28,6 +28,8 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    payment_intent = models.CharField(max_length=254, null=False, blank=False, default='')
+    payment_method = models.CharField(max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """
@@ -54,7 +56,7 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_number
+        return f'{self.order_number} - {self.payment_intent} - {self.payment_method}'
 
 
 class OrderLineItem(models.Model):

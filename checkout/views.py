@@ -11,6 +11,8 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
 
+from checkout.models import Order
+
 import stripe
 import json
 
@@ -52,13 +54,16 @@ def checkout(request):
         order_form = OrderForm(form_data)
         stripe_plan_id = request.POST['stripe_plan_id']
         automatic = request.POST['automatic']
-        # payment_method_id = request.POST['payment_method_id']
-        # payment_intent_id = request.POST['payment_intent_id']
+        payment_method_id = request.POST['payment_method_id']
+        
+        # payment_method_id = Order.payment_intent
+        # payment_intent_id = Order.payment_method
         
         if (stripe_plan_id != 'n/a' and automatic != 'N'):
             print(stripe_plan_id)
             print(automatic)
-            # print(payment_method_id)
+            print('this is payment method id from django ' + payment_method_id)
+            #print(payment_method_id)
             # customer = stripe.Customer.create(
             #     email = request.POST['email'],
             #     payment_method_id = payment_method_id,
@@ -123,11 +128,14 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
             payment_method_types=['card']
         )
+        print( 'this is payment intent id from django ' + intent.id)
+        
 
         # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
+                email = request.user.email
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
@@ -139,6 +147,7 @@ def checkout(request):
                     'street_address2': profile.default_street_address2,
                     'province_or_state': profile.default_province_or_state,
                 })
+                print(email)
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
@@ -155,6 +164,8 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        'customer_email': email,
+        'payment_intent_id': intent.id,
         
     }
 
@@ -166,9 +177,12 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
+    from pprint import pprint
+    pprint(request.body)
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-
+    print(order)
+    
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
