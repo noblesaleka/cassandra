@@ -18,6 +18,8 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
+    payment_intent_id = request.POST['payment_intent_id']
+    payment_method_id = request.POST['payment_method_id']
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -25,7 +27,10 @@ def cache_checkout_data(request):
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
+            'payment_intent_id': payment_intent_id,
+            'payment_method':payment_method_id,
         })
+        print('this is from cache --------------' + payment_method_id )
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry, your payment cannot be \
@@ -36,6 +41,7 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    stripe.api_key = stripe_secret_key
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -56,30 +62,28 @@ def checkout(request):
         automatic = request.POST['automatic']
         payment_method_id = request.POST['payment_method_id']
         
-        # payment_method_id = Order.payment_intent
-        # payment_intent_id = Order.payment_method
         
         if (stripe_plan_id != 'n/a' and automatic != 'N'):
             print(stripe_plan_id)
             print(automatic)
             print('this is payment method id from django ' + payment_method_id)
-            #print(payment_method_id)
-            # customer = stripe.Customer.create(
-            #     email = request.POST['email'],
-            #     payment_method_id = payment_method_id,
-            #     invoice_settings={
-            #         'default_payment_method': payment_method_id
-            #     }
-            # )
-            # stripe.Subscription.create(
-            #     customer = customer.id,
-            #     items = [
-            #         {
-            #             'plan': stripe_plan_id
-            #         },
-            #     ]
+            print(payment_method_id)
+            customer = stripe.Customer.create(
+                email = request.POST['email'],
+                payment_method = payment_method_id,
+                invoice_settings={
+                    'default_payment_method': payment_method_id
+                }
+            )
+            stripe.Subscription.create(
+                customer = customer.id,
+                items = [
+                    {
+                        'plan': stripe_plan_id
+                    },
+                ]
 
-            # )
+            )
         else:
             print('nada')
 
