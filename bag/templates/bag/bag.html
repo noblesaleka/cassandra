@@ -65,6 +65,21 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
+                            <form method="POST" action="{% url 'checkout' %}">
+                                {% csrf_token %}
+                                {% for item in bag_items %}
+                                <input type="hidden" value="{{item.product.stripe_plan_id}}" name="stripe_plan_id">
+                                <input type="hidden" value="{{item.product.automatic}}" name="automatic">
+                                <input type="hidden" value="{{payment_intent_id}}" name="payment_intent_id">
+                                {% endfor %}
+                                <input type="hidden" value="{{secret_key}}" name="secret_key">
+                                <button type="submit" class="btn main-button rounded-0 btn-lg">
+                                    <span class="">Secure Checkout</span>
+                                    <span class="icon">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </button>
+                            </form>
                             <a href="{% url 'products' %}" class="btn main-button-invert rounded-0 btn-lg">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
@@ -90,6 +105,12 @@
                 <span class="text-uppercase">Keep Shopping</span>
             </a>
             {% endif %}
+
+            {% for item in bag_items %}
+            <input type="hidden" value="{{item.product.stripe_plan_id}}" name="stripe_plan_id">
+            <input type="hidden" value="{{item.product.automatic}}" name="automatic">
+            <input type="hidden" value="{{payment_intent_id}}" name="payment_intent_id">
+            {% endfor %}
         </div>
     </div>
 </div>

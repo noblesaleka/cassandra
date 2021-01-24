@@ -94,7 +94,7 @@ function card(stripe_public_key, customer_email) {
                             hiddenInput.setAttribute('type', 'hidden');
                             hiddenInput.setAttribute('name', 'payment_method_id');
                             hiddenInput.setAttribute('value', payment_method_result.paymentMethod.id);
-                            console.log('this is the paymentid' + payment_method_result.paymentMethod.id)
+                            console.log('this is the paymentmethodid' + payment_method_result.paymentMethod.id)
                             form.appendChild(hiddenInput);
                             // Submit the form
                             form.submit();

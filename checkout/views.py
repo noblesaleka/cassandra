@@ -41,122 +41,79 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    stripe.api_key = stripe_secret_key
+    payment_intent_id = request.POST['payment_intent_id']
+    print('payment intent id ------------' + payment_intent_id)
+    payment_method = request.POST.get('payment_method', 'card')
+    print('payment method ------------' +payment_method)
+    client_secret = request.POST['secret_key']
+    
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
+        payment_method = request.POST.get('payment_method', 'card')
 
-        form_data = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
-            'postcode': request.POST['postcode'],
-            'town_or_city': request.POST['town_or_city'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
-            'province_or_state': request.POST['province_or_state'],
-        }
-        order_form = OrderForm(form_data)
-        stripe_plan_id = request.POST['stripe_plan_id']
-        automatic = request.POST['automatic']
-        payment_method_id = request.POST['payment_method_id']
-        
-        
-        if (stripe_plan_id != 'n/a' and automatic != 'N'):
-            print(stripe_plan_id)
-            print(automatic)
-            print('this is payment method id from django ' + payment_method_id)
-            print(payment_method_id)
-            customer = stripe.Customer.create(
-                email = request.POST['email'],
-                payment_method = payment_method_id,
-                invoice_settings={
-                    'default_payment_method': payment_method_id
-                }
-            )
-            stripe.Subscription.create(
-                customer = customer.id,
-                items = [
-                    {
-                        'plan': stripe_plan_id
-                    },
-                ]
+    #     form_data = {
+    #         'full_name': request.POST['full_name'],
+    #         'email': request.POST['email'],
+    #         'phone_number': request.POST['phone_number'],
+    #         'country': request.POST['country'],
+    #         'postcode': request.POST['postcode'],
+    #         'town_or_city': request.POST['town_or_city'],
+    #         'street_address1': request.POST['street_address1'],
+    #         'street_address2': request.POST['street_address2'],
+    #         'province_or_state': request.POST['province_or_state'],
+    #     }
+    #     order_form = OrderForm(form_data)
+    #     if order_form.is_valid():
+    #         order = order_form.save()
+    #         for item_id, item_data in bag.items():
+    #             try:
+    #                 product = Product.objects.get(id=item_id)
+    #                 if isinstance(item_data, int):
+    #                     order_line_item = OrderLineItem(
+    #                         order=order,
+    #                         product=product,
+    #                         quantity=item_data,
+    #                     )
+    #                     order_line_item.save()
+    #                 else:
+    #                     for size, quantity in item_data['items_by_size'].items():
+    #                         order_line_item = OrderLineItem(
+    #                             order=order,
+    #                             product=product,
+    #                             quantity=quantity,
+    #                             product_size=size,
+    #                         )
+    #                         order_line_item.save()
+    #             except Product.DoesNotExist:
+    #                 messages.error(request, (
+    #                     "One of the products in your bag wasn't found in our database. "
+    #                     "Please call us for assistance!")
+    #                 )
+    #                 order.delete()
+    #                 return redirect(reverse('view_bag'))
 
-            )
-        else:
-            print('nada')
-
-        if order_form.is_valid():
-            order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
-            order.original_bag = json.dumps(bag)
-            order.save()
-            
-            for item_id, item_data in bag.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    print(item_data)
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=item_data,
-                        )
-                    order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
-                    )
-                    order.delete()
-                    return redirect(reverse('view_bag'))
-
-            request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
-    else:
-        bag = request.session.get('bag', {})
-        if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
-            return redirect(reverse('products'))
+    #         request.session['save_info'] = 'save-info' in request.POST
+    #         return redirect(reverse('checkout_success', args=[order.order_number]))
+    #     else:
+    #         messages.error(request, 'There was an error with your form. \
+    #             Please double check your information.')
+    # else:
+    #     bag = request.session.get('bag', {})
+    #     if not bag:
+    #         messages.error(request, "There's nothing in your bag at the moment")
+    #         return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-            payment_method_types=['card']
-        )
-        print( 'this is payment intent id from django ' + intent.id)
-        
-
-        # Attempt to prefill the form with any info the user maintains in their profile
-        if request.user.is_authenticated:
-            try:
-                profile = UserProfile.objects.get(user=request.user)
-                email = request.user.email
-                order_form = OrderForm(initial={
-                    'full_name': profile.user.get_full_name(),
-                    'email': profile.user.email,
-                    'phone_number': profile.default_phone_number,
-                    'country': profile.default_country,
-                    'postcode': profile.default_postcode,
-                    'town_or_city': profile.default_town_or_city,
-                    'street_address1': profile.default_street_address1,
-                    'street_address2': profile.default_street_address2,
-                    'province_or_state': profile.default_province_or_state,
-                })
-                print(email)
-            except UserProfile.DoesNotExist:
-                order_form = OrderForm()
-        else:
-            order_form = OrderForm()
-
+        # intent = stripe.PaymentIntent.create(
+        #     amount=stripe_total,
+        #     currency=settings.STRIPE_CURRENCY,
+        #     payment_method_types = ['card'],
+        # )
+        # print('------------------this is payment intent ' + str(intent))
         order_form = OrderForm()
 
     if not stripe_public_key:
@@ -167,9 +124,8 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-        'customer_email': email,
-        'payment_intent_id': intent.id,
+        'client_secret': client_secret,
+        # 'payment_method': intent.id,
         
     }
 
