@@ -59,7 +59,8 @@ def checkout(request):
         'client_secret': payment_intent.client_secret,
         'stripe_public_key': stripe_public_key,
         'customer_email':customer_email,
-        'payment_intent_id':payment_intent.id
+        'payment_intent_id':payment_intent.id,
+
     }
 
     template = 'checkout/checkout.html'
@@ -72,17 +73,45 @@ def card(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     payment_intent_id = request.POST['payment_intent_id']
     payment_method_id = request.POST['payment_method_id']
+    stripe_plan_id = request.POST['stripe_plan_id']
+    automatic = request.POST['automatic']
+    stripe.api_key = stripe_secret_key
 
     print('payment_intent_id')
     print(payment_intent_id)
     print('payment_method_id')
     print(payment_method_id)
+    print('stripe_plan_id')
+    print(stripe_plan_id)
+    print('automatic')
+    print(automatic)
 
-    stripe.api_key = stripe_secret_key
-    stripe.PaymentIntent.modify(
-        payment_intent_id,
-        payment_method=payment_method_id,
-    )
+    if automatic == 'Y':
+        customer = stripe.Customer.create(
+            email=request.user.email,
+            payment_method=payment_method_id,
+            invoice_settings={
+                'default_payment_method': payment_method_id
+            }
+        )
+        stripe.Subscription.create(
+            customer=customer.id,
+            items=[
+                {
+                    'plan': stripe_plan_id
+                },
+            ]
+        )
+        stripe.PaymentIntent.modify(
+            payment_intent_id,
+            payment_method=payment_method_id,
+            customer=customer.id,
+        )
+    else:
+        stripe.PaymentIntent.modify(
+            payment_intent_id,
+            payment_method=payment_method_id,
+        )
 
     stripe.PaymentIntent.confirm(
         payment_intent_id
