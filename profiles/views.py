@@ -4,8 +4,11 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 from products.models import Product
+from django.conf import settings
 
 from checkout.models import Order
+import logging
+import stripe
 
 
 
@@ -61,6 +64,34 @@ def membership(request):
     }
     return render(request, 'profiles/membership.html', context)
 
-# @require_POST
-# def payment_method(request):
-#     plan = request.POST.get('plan', 'm')
+def set_paid_until(charge):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    pi = stripe.PaymentIntent.retrieve(charge.payment_intent)
+    subscription_id = charge.subscription
+    print('this is subscription id ' + subscription_id)
+
+    if pi.customer:
+        customer = stripe.Customer.retrieve(pi.customer)
+        email = customer.email
+        if customer:
+            subscr = stripe.Subscription.retrieve(
+                    subscription_id
+                )
+        
+            current_period_end = subscr['current_period_end']
+            print(current_period_end)
+
+        try:
+            user = UserProfile.objects.get(default_email=email)
+        except UserProfile.DoesNotExist:
+            print(
+                f"User with email {email} not found"
+            )
+            return False
+
+        user.set_paid_until(current_period_end)
+        print(f"Profile with {current_period_end} saved for user {email}")
+    
+         
+    else:
+        pass

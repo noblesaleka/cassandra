@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -33,8 +34,34 @@ def cache_checkout_data(request):
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
+@require_POST
+@csrf_exempt
+def stripe_webhooks(request):
 
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
 
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WH_SECRET
+        )
+        logger.info("Event constructed correctly")
+    except ValueError:
+        # Invalid payload
+        logger.warning("Invalid Payload")
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError:
+        # Invalid signature
+        logger.warning("Invalid signature")
+        return HttpResponse(status=400)
+
+    # Handle the event
+    if event.type == 'charge.succeeded':
+        # object has  payment_intent attr
+        set_paid_until(event.data.object)
+
+    return HttpResponse(status=200)
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY

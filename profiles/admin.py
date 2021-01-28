@@ -8,6 +8,7 @@ class UserProfileAdmin(admin.ModelAdmin):
         'default_phone_number',
         'default_email',
         'default_street_address1',
+        'paid_until',
        
     )
 

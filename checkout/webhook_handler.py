@@ -6,6 +6,7 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from profiles.views import set_paid_until
 
 import json
 import time
@@ -49,7 +50,26 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
+    
+    def handle_charge_succeeded(self, event):
+        """
+        Handle a generic/unknown/unexpected webhook event
+        """
+        print("charge success")
+        # set_paid_until(event.data.object)
+        return HttpResponse(
+            content=f'Unhandled webhook received: {event["type"]}',
+            status=200)
 
+    def handle_payment_succeeded(self, event):
+        """
+        Handle a generic/unknown/unexpected webhook event
+        """
+        print("payment success")
+        set_paid_until(event.data.object)
+        return HttpResponse(
+            content=f'Unhandled webhook received: {event["type"]}',
+            status=200)
     # def handle_payment_intent_succeeded(self, event):
     #     """
     #     Handle the payment_intent.succeeded webhook from Stripe
