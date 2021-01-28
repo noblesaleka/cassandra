@@ -1,21 +1,18 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib import messages
 from products.models import Product
-from django.conf import settings
-from bag.contexts import bag_contents
-import stripe
 
-# Create your views here.
 
 def view_bag(request):
     """ A view that renders the bag contents page """
     heading = "Shopping Bag"
-       
+
     context = {
         'heading': heading,
     }
 
     return render(request, 'bag/bag.html', context)
+
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
@@ -39,7 +36,6 @@ def add_to_bag(request, item_id):
     return redirect(redirect_url)
 
 
-
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
 
@@ -53,5 +49,5 @@ def remove_from_bag(request, item_id):
         return HttpResponse(status=200)
 
     except Exception as e:
-            messages.error(request, f'Error removing item: {e}')
-            return HttpResponse(status=500)
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
