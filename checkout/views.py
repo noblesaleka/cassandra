@@ -17,6 +17,7 @@ from checkout.models import Order
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -33,6 +34,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+
 
 @require_POST
 @csrf_exempt
@@ -63,11 +65,12 @@ def stripe_webhooks(request):
 
     return HttpResponse(status=200)
 
+
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     payment_method = 'card'
-    
+
 
     bag = request.session.get('bag', {})
     current_bag = bag_contents(request)
@@ -85,16 +88,14 @@ def checkout(request):
     context = {
         'client_secret': payment_intent.client_secret,
         'stripe_public_key': stripe_public_key,
-        'customer_email':customer_email,
-        'payment_intent_id':payment_intent.id,
+        'customer_email': customer_email,
+        'payment_intent_id': payment_intent.id,
 
     }
 
     template = 'checkout/checkout.html'
     return render(request, template, context)
 
-
-    
 
 def card(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -146,8 +147,8 @@ def card(request):
 
     return render(request, 'checkout/good_job.html')
 
-def checkout_success(request, order_number):
 
+def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
@@ -156,7 +157,7 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     print(order)
-    
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
@@ -191,17 +192,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-
-# def checkout_membership(request):
-#     stripe_public_key = settings.STRIPE_PUBLIC_KEY
-#     stripe_secret_key = settings.STRIPE_SECRET_KEY
-#     stripe.api_key = stripe_secret_key
-#     payment_intent = stripe.PaymentIntent.create(
-#         amount = 9.99,
-#         currency = settings.STRIPE_CURRENCY,
-#     )
-
-#     context['secret_key'] = payment_intent.client_secret
-#     context['STRIPE_PUBLIC_KEY'] = settings.STRIPE_PUBLIC_KEY
-#     return render(request, 'something.html', context)
