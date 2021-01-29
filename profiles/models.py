@@ -39,19 +39,9 @@ class UserProfile(models.Model):
         self.paid_until = paid_until
         self.save()
 
-    def has_paid(
-        self,
-        current_date=datetime.date.today()
-    ):
-        if self.paid_until is None:
-            return False
-
-        return current_date < self.paid_until
+    def has_paid(self, current_date=datetime.date.today()):
+        return current_date < self.paid_until if self.paid_until else False
     
-    
-
-    
-
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):

@@ -2,17 +2,19 @@ import os
 from pathlib import Path
 import dj_database_url
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['cassandra-django-milestone.herokuapp.com', 'localhost']
@@ -61,8 +63,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
-            BASE_DIR / 'templates' / 'allauth',
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -74,6 +76,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
+                'profiles.contexts.membership_status',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -139,10 +142,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = BASE_DIR / 'static'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_ID = 1
 
@@ -203,7 +206,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 STRIPE_PLAN_MONTHLY_ID = os.getenv('STRIPE_PLAN_MONTHLY_ID', '')
 
 
-if DEBUG:
+if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'noblesaleka@hotmail.com'
 else:

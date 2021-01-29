@@ -1,15 +1,14 @@
+import logging
+import stripe
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+
 from .models import UserProfile
 from .forms import UserProfileForm
 from products.models import Product
-from django.conf import settings
-
 from checkout.models import Order
-import logging
-import stripe
-
 
 
 @login_required
@@ -58,6 +57,8 @@ def order_history(request, order_number):
 def membership(request):
     products = Product.objects.all()
     products = products.filter(category__name__icontains='membership')
+
+    request_user = request.user
 
     context = {
         'products': products,
