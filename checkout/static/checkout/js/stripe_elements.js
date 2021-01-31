@@ -1,31 +1,3 @@
-// var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
-// var client_secret = $('#id_client_secret').text().slice(1, -1);
-// var stripe = Stripe(stripe_public_key);
-// var elements = stripe.elements();
-
-// var style = {
-//     base: {
-//         color: '#000',
-//         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-//         fontSmoothing: 'antialiased',
-//         fontSize: '16px',
-//         '::placeholder': {
-//             color: '#aab7c4'
-//         }
-//     },
-//     invalid: {
-//         color: '#dc3545',
-//         iconColor: '#dc3545'
-//     }
-// };
-
-// Create an instance of the card Element.
-// var card = elements.create('card', {
-//     style: style
-// });
-// card.mount("#card-element");
-
-//works when user logged in if the user clicks the purchase and the are not logged inforce them to
 function card(stripe_public_key, customer_email) {
     document.addEventListener("DOMContentLoaded", function(event) {
         var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
@@ -69,7 +41,10 @@ function card(stripe_public_key, customer_email) {
         var form = document.getElementById('payment-form');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-
+            card.update({
+                'disabled': true
+            });
+            $('#submit-button').attr('disabled', true);
             stripe.createToken(card).then(function(result) {
                 if (result.error) {
                     // Inform the user if there was an error.
@@ -87,14 +62,16 @@ function card(stripe_public_key, customer_email) {
                         if (payment_method_result.error) {
                             var errorElement = document.getElementById('card-errors');
                             errorElement.textContent = payment_method_result.error.message;
+                            card.update({
+                                'disabled': false
+                            });
+                            $('#submit-button').attr('disabled', false);
                         } else {
                             var form = document.getElementById('payment-form');
                             var hiddenInput = document.createElement('input');
-
                             hiddenInput.setAttribute('type', 'hidden');
                             hiddenInput.setAttribute('name', 'payment_method_id');
                             hiddenInput.setAttribute('value', payment_method_result.paymentMethod.id);
-                            console.log('this is the paymentmethodid' + payment_method_result.paymentMethod.id)
                             form.appendChild(hiddenInput);
                             // Submit the form
                             form.submit();

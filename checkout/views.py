@@ -69,7 +69,7 @@ def stripe_webhooks(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    # payment_method = 'card'
+    payment_method = 'card'
 
     bag = request.session.get('bag', {})
     if not bag:
