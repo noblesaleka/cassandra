@@ -9,7 +9,7 @@ def membership_status(request):
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
     else:
-        profile = 'noone'
+        profile = ''
 
     context = {
         'profile': profile,

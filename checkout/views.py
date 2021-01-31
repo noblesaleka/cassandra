@@ -69,10 +69,14 @@ def stripe_webhooks(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    payment_method = 'card'
-
+    # payment_method = 'card'
 
     bag = request.session.get('bag', {})
+    if not bag:
+        messages.error(request, "There's nothing in your bag at the moment.")
+        return redirect(reverse('products'))
+
+    order_form = OrderForm()
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
     stripe_total = round(total * 100)
@@ -90,11 +94,12 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'customer_email': customer_email,
         'payment_intent_id': payment_intent.id,
+        'order_form': order_form,
+        'heading': 'checkout'
 
     }
 
-    template = 'checkout/checkout.html'
-    return render(request, template, context)
+    return render(request, 'checkout/checkout.html', context)
 
 
 def card(request):
