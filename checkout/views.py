@@ -150,7 +150,46 @@ def card(request):
         payment_intent_id
     )
 
-    return render(request, 'checkout/good_job.html')
+    bag = request.session.get('bag', {})
+    form_data = {
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'province_or_state': request.POST['province_or_state'],
+        }
+    order_form = OrderForm(form_data)
+    print(form_data)
+    if order_form.is_valid():
+        order = order_form.save()
+        for item_id, item_data in bag.items():
+            try:
+                product = Product.objects.get(id=item_id)
+                order_line_item = OrderLineItem(
+                    order=order,
+                    product=product,
+                    quantity=item_data,
+                )
+                order_line_item.save()
+            except Product.DoesNotExist:
+                messages.error(request, (
+                    "One of the products in your bag wasn't found in our database. "
+                    "Please call us for assistance!")
+                )
+                order.delete()
+                return redirect(reverse('view_bag'))
+
+        request.session['save_info'] = 'save-info' in request.POST
+    else:
+        messages.error(request, 'There was an error with your form. \
+            Please double check your information.')
+
+
+    return redirect(reverse('checkout_success', args=[order.order_number]))
 
 
 def checkout_success(request, order_number):
