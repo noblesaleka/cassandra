@@ -61,6 +61,7 @@ def stripe_webhooks(request):
     # Handle the event
     if event.type == 'charge.succeeded':
         # object has  payment_intent attr
+        print('charge successssssssssssss')
         set_paid_until(event.data.object)
 
     return HttpResponse(status=200)
@@ -153,7 +154,7 @@ def card(request):
     bag = request.session.get('bag', {})
     form_data = {
             'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
+            'email': request.user.email,
             'phone_number': request.POST['phone_number'],
             'country': request.POST['country'],
             'postcode': request.POST['postcode'],
