@@ -57,7 +57,7 @@
                                 <ul class="list-unstyled">
                                     {% for item in order.lineitems.all %}
                                     <li class="small">
-
+                                        {{ item.product.name }} x{{ item.quantity }}
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -72,7 +72,7 @@
     </div>
     {% endblock %}
 
-    <!-- {% block postloadjs %}
+    {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
-    {% endblock %} -->
+    {% endblock %}

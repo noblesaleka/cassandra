@@ -61,7 +61,6 @@ def stripe_webhooks(request):
     # Handle the event
     if event.type == 'charge.succeeded':
         # object has  payment_intent attr
-        print('charge successssssssssssss')
         set_paid_until(event.data.object)
 
     return HttpResponse(status=200)
@@ -89,6 +88,24 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
         payment_method_types=['card'],
     )
+
+    if request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            order_form = OrderForm(initial={
+                'full_name': profile.user.get_full_name(),
+                'phone_number': profile.default_phone_number,
+                'country': profile.default_country,
+                'postcode': profile.default_postcode,
+                'town_or_city': profile.default_town_or_city,
+                'street_address1': profile.default_street_address1,
+                'street_address2': profile.default_street_address2,
+                'default_province_or_state': profile.default_province_or_state,
+            })
+        except UserProfile.DoesNotExist:
+            order_form = OrderForm()
+    else:
+        order_form = OrderForm()
 
     context = {
         'client_secret': payment_intent.client_secret,
@@ -205,7 +222,6 @@ def checkout_success(request, order_number):
     pprint(request.body)
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    print(order)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
