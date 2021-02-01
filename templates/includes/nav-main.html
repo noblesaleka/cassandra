@@ -19,13 +19,21 @@
          </div>
          <div class="col-12 col-lg-5  my-auto py-1 py-lg-0">
              <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                 {% if profile.has_paid %}
                  <li class="list-inline-item dropdown">
-                     <a class="explore-now-button btn rounded-0 " href="{% url 'select' %}" id="explore">
+                     <div class="text-center">
+                         <p class="my-0 mr-5">Membership Active Until {{ profile.paid_until }}</p>
+                     </div>
+                 </li>
+                 {% else %}
+                 <li class="list-inline-item dropdown">
+                     <a class="explore-now-button btn rounded-0 " href="{% url 'membership' %}" id="amembership">
                          <div class="text-center">
-                             <p class="my-0 mr-5">Purchase A Membership</p>
+                             <p class="my-0 mr-5">Purchase a Membership</p>
                          </div>
                      </a>
                  </li>
+                 {% endif %}
                  <li class="list-inline-item dropdown">
                      <a class="explore-now-button btn rounded-0 " href="{% url 'products' %}" id="explore">
                          <div class="text-center">

@@ -6,9 +6,7 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category
 from .forms import ProductForm
-from membership.models import UserMembership
 
-# Create your views here.
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -20,12 +18,6 @@ def all_products(request):
     heading = 'All Products'
     sort = None
     direction = None
-    user_membership = UserMembership.objects.filter(user=request.user).first()
-    user_membership_type = user_membership.membership.membership_type
-    product_allowed_mem_types = Product.allowed_memberships
-
-    if (user_membership_type == product_allowed_mem_types):
-        downloads = True
 
     if request.GET:
         if 'sort' in request.GET:
@@ -46,21 +38,18 @@ def all_products(request):
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)  
-            heading = request.GET['category'] 
-                    
+            categories = Category.objects.filter(name__in=categories)
+            heading = request.GET['category']
 
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-                
+
             queries = Q(name__icontains=query) | Q(photographer__icontains=query) | Q(aspectRatio__icontains=query) | Q(software__icontains=query) | Q(lens__icontains=query) | Q(resolution__icontains=query) | Q(camera__icontains=query)
             products = products.filter(queries)
             heading = 'Search Results'
-
-    
 
     current_sorting = f'{sort}_{direction}'
 
@@ -71,9 +60,6 @@ def all_products(request):
         'heading': heading,
         'current_sorting': current_sorting,
         'downloads': downloads,
-        'product_allowed_mem_types': product_allowed_mem_types,
-        'user_membership_type' : user_membership_type,
-
     }
 
     return render(request, 'products/products.html', context)
@@ -120,7 +106,7 @@ def add_product(request):
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,

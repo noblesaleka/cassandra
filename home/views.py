@@ -1,13 +1,17 @@
-from django.shortcuts import render
+from django.views.generic import ListView
 from products.models import Product
 
-# Create your views here.
 
-def index(request):
-    """ A view to return the index page """
-    products = Product.objects.all()
+class Home(ListView):
+    model = Product
+    template_name = 'home/index.html'
+    context_object_name = 'products'
 
-    context = {
-        'products': products,
-    }
-    return render(request, 'home/index.html', context)
+
+# def index(request):
+#     products = Product.objects.all()
+
+#     context = {
+#         'products': products,
+#     }
+#     return render(request, 'home/index.html', context)
