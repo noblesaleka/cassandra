@@ -25,23 +25,11 @@
     </div>
     <div class="row">
         <div class="col-12 col-lg-6">
-            <p class="text-muted">Default Delivery Information</p>
+            <p class="text-muted">Personal Information</p>
             <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="plan">Select Plan</label>
-                    <select class="form-control" id="plan">
-                        <option>Free</option>
-                        <option>Paid</option>
-                    </select>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="autorenew">
-                    <label class="form-check-label" for="autorenew">
-                        Automatic renewal
-                    </label>
-                </div>
-                <button class="btn btn-black rounded-0 text-uppercase float-right">Continue</button>
+                {{form|crispy}}
+                <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
             </form>
         </div>
         <div class="col-12 col-lg-6">

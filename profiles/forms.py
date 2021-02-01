@@ -5,7 +5,7 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user', 'paid_until')
+        exclude = ('user', 'paid_until', 'default_email')
 
     def __init__(self, *args, **kwargs):
         """
@@ -15,7 +15,6 @@ class UserProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'default_phone_number': 'Phone Number',
-            'default_email': 'Email',
             'default_postcode': 'Postal Code',
             'default_town_or_city': 'Town or City',
             'default_street_address1': 'Street Address 1',

@@ -58,12 +58,11 @@ class MembershipView(ListView):
         return context
 
 
-    
-
 def membership(request):
     products = Product.objects.filter(category__name__icontains='membership')
     context = {'products': products,    }
     return render(request, 'profiles/membership.html', context)
+
 
 def set_paid_until(charge):
     stripe.api_key = settings.STRIPE_SECRET_KEY
