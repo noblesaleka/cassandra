@@ -67,8 +67,12 @@
                     </div>
                     <div class="col-12 col-md-8 text-md-right">
                         <p class="small mb-0">{{ item.quantity }} @ ${{ item.product.price }} each</p>
+                        {% if product.image %}
                         <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.title }}">
                         <a href="{{ item.product.image.url }}" download="{{ item.product.image.url }}">Download</a>
+                        {% else %}
+                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png">
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
