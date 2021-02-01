@@ -44,32 +44,33 @@ class StripeWH_Handler:
 
     def handle_payment_intent_succeeded(self, event):
         """
-        Handle a generic/unknown/unexpected webhook event
+        Handle a payment_intent.succeeded webhook event
         """
-        print("got it")
+        intent = event.data.object
+        # print(intent)
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
 
     def handle_charge_succeeded(self, event):
         """
-        Handle a generic/unknown/unexpected webhook event
+        Handle a charge.succeeded webhook event
         """
-        print("charge success")
-        # set_paid_until(event.data.object)
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
 
     def handle_payment_succeeded(self, event):
         """
-        Handle a generic/unknown/unexpected webhook event
+        Handle a payment.succeeded webhook event
         """
-        print("payment success")
+        
         set_paid_until(event.data.object)
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
+
+
     # def handle_payment_intent_succeeded(self, event):
     #     """
     #     Handle the payment_intent.succeeded webhook from Stripe
