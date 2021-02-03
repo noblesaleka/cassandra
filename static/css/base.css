@@ -1036,6 +1036,10 @@ input[name='q']::placeholder {
     transform: translateY(-50%)
 }
 
+.header-container {
+    padding: 200px 0px 50px 0px;
+}
+
 .header_search {
     height: 90px
 }
@@ -1061,6 +1065,10 @@ input[name='q']::placeholder {
 
 .account_container {
     margin-right: 0px
+}
+
+.order-confirmation-wrapper {
+    margin-bottom: 100px !important;
 }
 
 /* fixed top navbar only on medium and up */

@@ -1,143 +1,118 @@
- <header class="container-fluid fixed-top">
-     <div id="topnav" class="row bg-white pt-ld-2 d-none d-lg-flex">
-         <div class="col-12 col-lg-2 my-auto py-1 py-lg-0 text-center text-lg-left">
-             <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                 <img src="{{ MEDIA_URL }}cassandra-logo-nav-black.png" id="img-nav-logo" alt="Cassandra Logo" class="img-nav-logo">
-             </a>
-         </div>
-         <div class="col-12 col-lg-5 my-auto py-1 py-lg-0">
-             <form id="search-form" class="form-inline" role="form" method="GET" action="{% url 'products' %}">
-                 <div class="input-group w-100">
-                     <input type="text" class="form-control search-form" placeholder="Search" name="q">
-                     <span class="input-group-btn">
-                         <button type="submit" class="btn f-white bg-space-cadet outline-space-cadet search-btn ">
-                             <i class="fa fa-search"></i>
-                         </button>
-                     </span>
-                 </div>
-             </form>
-         </div>
-         <div class="col-12 col-lg-5  my-auto py-1 py-lg-0">
-             <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                 {% if profile.has_paid %}
-                 <li class="list-inline-item dropdown">
-                     <div class="text-center">
-                         <p class="my-0 mr-5">Membership Active Until {{ profile.paid_until }}</p>
-                     </div>
-                 </li>
-                 {% else %}
-                 <li class="list-inline-item dropdown">
-                     <a class="explore-now-button btn rounded-0 " href="{% url 'membership' %}" id="amembership">
-                         <div class="text-center">
-                             <p class="my-0 mr-5">Purchase a Membership</p>
-                         </div>
-                     </a>
-                 </li>
-                 {% endif %}
-                 <li class="list-inline-item dropdown">
-                     <a class="explore-now-button btn rounded-0 " href="{% url 'products' %}" id="explore">
-                         <div class="text-center">
-                             <p class="my-0 mr-5">Explore</p>
-                         </div>
-                     </a>
-                 </li>
+<header class="pt-3">
+    <div class="header_main">
+        <div class="container">
+            <div class="row">
+                <!-- Logo -->
+                <div class="col-lg-2 col-sm-3 col-3 order-1">
+                    <div class="logo_container">
+                        <div class="logo"><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}cassandra-logo-nav-black.png" id="img-nav-logo" alt="Cassandra Logo" class="img-nav-logo"></a></div>
+                    </div>
+                </div> <!-- Search -->
+                <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                    <div class="header_search">
+                        <div class="header_search_content">
+                            <div class="header_search_form_container">
+                                <form id="search-form" class="form-inline" role="form" method="GET" action="{% url 'products' %}">
+                                    <div class="input-group w-100">
+                                        <input type="text" class="form-control search-form" placeholder="Search" name="q">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn f-white bg-space-cadet outline-space-cadet search-btn ">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Account -->
+                <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+                    <div class="account d-flex flex-row align-items-center justify-content-end">
+                        <!-- My Account -->
+                        {% if request.user.is_authenticated %}
+                        <div class="account_container d-flex flex-row align-items-center justify-content-end">
+                            <a class="join-now-button btn rounded-0 " href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center ">
+                                    <p class="my-0 ">My Account</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                {% if request.user.is_superuser %}
+                                <a href="{% url  'add_product' %}" class="dropdown-item">Product Management</a>
+                                {% endif %}
+                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
 
-                 {% if request.user.is_superuser %}
-                 <li class="list-inline-item dropdown">
-                     <a class="explore-now-button btn rounded-0 " href="{% url  'add_product' %}" id="upload">
-                         <div class="text-center">
-                             <p class="my-0 mr-5">Upload</p>
-                         </div>
-                     </a>
-                 </li>
-                 {% endif %}
-
-
-                 {% if request.user.is_authenticated %}
-                 <li class="list-inline-item dropdown">
-                     <a class="join-now-button btn rounded-0 " href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <div class="text-center">
-                             <p class="my-0">Account</p>
-                         </div>
-                     </a>
-                     <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                         {% if request.user.is_superuser %}
-                         <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                         {% else %}
-                         <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                         {% endif %}
-
-                     </div>
-                 </li>
-                 {% else %}
-                 <li class="list-inline-item dropdown">
-                     <a class="join-now-button btn rounded-0 " href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <div class="text-center ">
-                             <p class="my-0 ">Join</p>
-                         </div>
-                     </a>
-                     <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                         {% if request.user.is_superuser %}
-                         <a href="" class="dropdown-item">Product Management</a>
-                         {% endif %}
-                         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                     </div>
-                 </li>
-                 {% endif %}
-
-                 <li class="list-inline-item dropdown">
-                     <a class="cart-button btn rounded-0 " href="{% url 'view_bag' %}" id="cart">
-                         <div class="text-center">
-                             <i class="fa fs20rem">&#xf07a;</i>
-                             <span class='badge badge-warning' id='lblCartCount'>
-                                 {% if grand_total %}
-                                 ${{ grand_total|floatformat:2}}
-                                 {% else %}
-                                 $0.00
-                                 {% endif %}
-                             </span>
-                         </div>
-                     </a>
-                 </li>
+                            </div>
+                        </div>
+                        <!-- Join -->
+                        {% else %}
+                        <div class="account_container d-flex flex-row align-items-center justify-content-end">
+                            <a class="join-now-button btn rounded-0 " href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center ">
+                                    <p class="my-0 ">Join</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- Cart -->
+                        <div class="cart">
+                            <div class="account_container d-flex flex-row align-items-center justify-content-end">
+                                <a class="cart-button btn rounded-0 " href="{% url 'view_bag' %}" id="cart">
+                                    <div class="text-center">
+                                        <i class="fa fs20rem">&#xf07a;</i>
+                                        <span class='badge badge-warning' id='lblCartCount'>
+                                            {% if grand_total %}
+                                            ${{ grand_total|floatformat:2}}
+                                            {% else %}
+                                            $0.00
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+            {% include 'includes/nav-second.html' %}
+        </nav>
+    </div>
+    <div id="delivery-banner" class="row text-center">
+        <div class="col bg-black text-white">
+            {% if profile.has_paid %}
+            <h4 class="logo-font my-1">Membership Active Until {{ profile.paid_until }}</h4>
+            {% else %}
+            <h4 class="logo-font my-1">Become a member and get unlimited downloads!</h4>
+            {% endif %}
+        </div>
+    </div>
 
 
-             </ul>
-         </div>
-     </div>
-     <div class="row bg-white">
-         <nav class="navbar navbar-expand-lg navbar-light w-100">
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-             </button>
-             {% include 'includes/nav-second.html' %}
-         </nav>
-     </div>
-     <!-- <div id="delivery-banner" class="row text-center">
-         <div class="col bg-black text-white">
-             <h4 class="logo-font my-1">Free delivery on orders over ${{ free_shipping_threshold }}!</h4>
-         </div>
-     </div> -->
+</header>
 
+{% if messages %}
+<div class="message-container">
 
- </header>
+</div>
+{% endif %}
 
- {% if messages %}
- <div class="message-container">
+{% block page_header %}
+{% endblock %}
 
- </div>
- {% endif %}
+{% block content %}
+{% endblock %}
 
- {% block page_header %}
- {% endblock %}
-
- {% block content %}
- {% endblock %}
-
- {% block postloadjs %}
- <script type="text/javascript">
-     $('.toast').toast('show');
- </script>
- {% endblock %}
+{% block postloadjs %}
+<script type="text/javascript">
+    $('.toast').toast('show');
+</script>
+{% endblock %}

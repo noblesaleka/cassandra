@@ -19,10 +19,11 @@
             <div class="card-columns">
                 {% for category in categories %}
                 <div class="card p-3">
-                    {% if categories.image %}
-                    <a href="{">
-                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% if category.image %}
+                    <a href="">
+                        <img class="card-img-top" src="{{ category.image.url }}" alt="{{ category.name }}">
                     </a>
+                    <h2 class="logo-font small fw700">{{ category.name }}</h2>
                     {% else %}
                     <a href="">
                         <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">

@@ -7,11 +7,3 @@ class Home(ListView):
     template_name = 'home/index.html'
     context_object_name = 'products'
 
-
-# def index(request):
-#     products = Product.objects.all()
-
-#     context = {
-#         'products': products,
-#     }
-#     return render(request, 'home/index.html', context)

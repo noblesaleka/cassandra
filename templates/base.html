@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
@@ -33,7 +32,6 @@
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-
     {% endblock %}
 
     {% block extra_js %}
@@ -45,8 +43,7 @@
 <body>
 
     <header>
-        {% include 'includes/nav-main_copy.html' %}
-
+        {% include 'includes/nav-main.html' %}
     </header>
 
 
@@ -80,8 +77,6 @@
         $('.toast').toast('show');
     </script>
     {% endblock %}
-
-
 </body>
 
 </html>
