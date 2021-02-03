@@ -765,6 +765,10 @@ html {
     background: #000 !important;
 }
 
+.bg-red {
+    background: red !important;
+}
+
 .bg-space-cadet {
     background: #2b2d42 !important;
 }
@@ -972,6 +976,20 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+.header_main {
+    z-index: 1
+}
+
+.header.scrolled .header_main {}
+
+.header_main_item {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
@@ -1036,5 +1054,5 @@ input[name='q']::placeholder {
         font-size: .75rem;
     }
 
-    
+
 }
