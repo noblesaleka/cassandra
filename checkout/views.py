@@ -65,7 +65,7 @@ def stripe_webhooks(request):
 
     return HttpResponse(status=200)
 
-
+@login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -120,7 +120,7 @@ def checkout(request):
 
     return render(request, 'checkout/checkout.html', context)
 
-
+@login_required
 def card(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     payment_intent_id = request.POST['payment_intent_id']
@@ -205,7 +205,7 @@ def card(request):
 
     return redirect(reverse('checkout_success', args=[order.order_number]))
 
-
+@login_required
 def checkout_success(request, order_number):
     """
     Handle successful checkouts
