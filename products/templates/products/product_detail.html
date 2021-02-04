@@ -32,6 +32,15 @@
                 <p class="lead mb-0 text-left mb-5">Price: ${{ product.price }}</p>
                 <div class="row">
                     <div class="col-12">
+                        {% if profile.has_paid %}
+                        <a href="{{ product.image.url }}" download="{{ product.image.url }}">
+                            <button class=" main-button btn rounded-0 w-100 mb-2">
+                                <div class=" text-center ">
+                                    <p class=" my-0 ">Download</p>
+                                </div>
+                            </button>
+                        </a>
+                        {% else %}
                         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                             {% csrf_token %}
 
@@ -44,6 +53,8 @@
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
+                        {% endif %}
+
                     </div>
                 </div>
                 <div class="row">

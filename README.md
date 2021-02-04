@@ -1,38 +1,31 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
-
-
 # E-commerce store
-Hello, My name is Saleka and through this project I am excited to present to you
-another in a series of web applications on my journey through code institutes Full-Stack web development program. Welcome to fullstack frameworks with django.
-This project is an application which allows the user to create a profile, and was intended so the user to be able to  purchase a product from the site using stripe payments. 
-This application provides a realistic e-commerce patform that allows for the owner of the site to earn money, 
-while the user is able to find the most exciting products at the click of a button.
+Hello, My name is Saleka and through this project I am excited to present to you another in a series of web applications on my journey through code institutes Full-Stack web development program. Welcome to fullstack frameworks with django.
+This project is an application which allows the user to create a profile, purchase digital photo downloads, even have a membership by which they can have unlimited downloads all done using stripe payment gateway. 
+This application provides a realistic e-commerce patform that allows for the owner of the site to earn money, while the user is able to find the most exciting photographs at the click of a button.
 I created this project in order to produce a functional e-commerce platform that utilizes django and stripe payments to process oders.
 Welcome to my portfolio Full-Stack Frameworks with Django!
 
  
 ## UX
  
-This website is designed for the to be user focused allowing the user to really take advantage of the website, by adding to basket, removing items, and seeing their downloads of high quality photos checkout total in real time. Thus allowing for full crud functionality.
+This website is designed to be user focused allowing the user to really take advantage of the website, by adding to basket, removing items, and seeing their downloads of high quality photos checkout total in real time. Thus allowing for full crud functionality.
 
 
  A list of user Stories:
 
 <a href= "/Conceptual_database.pdf">Conceptual database design</a>
 <a href= "/Wireframe_Cassandra.jpeg">Wireframe</a>
-- As a user type, I want to perform an action, so that I can achieve a goal.
-- As a user I want to listen to buy photos
-- One photo many has many users to buy digital downloads
-- A user can create a profile
-- A user can buy many photos
-- Each profile has a user which stores their downloaded purchased photos
-- A user can purchase many photos, but each photo can only be purchesed by one user
-
+- As a shopper I want to view photographs available on Cassandra so that I can select some to purchase
+- As a shopper I want to view the individual details of photographs available on Cassandra so that I can identify the price, lens used to take the photograph, resolution, camera, software, aspect ratio and photographer.
+- As a shopper I want to easily view the total of my purchase at any time so that I can avoid spending too much.
+- As a user I want to easily register for an account so that I can have a personal account 
+- As a user I want to easily login or logout so that I can access my personal account and be able to view my previous orders and personal information
+- As a user I want to easily recover my password in case I forget it so that I can recover access to my account
+- As a user I want to recieve an email confirmation after registering so that I can vreify that my account registration was successful
+- As a user I want to have a personalized user profile so that I can view my personal order history
+- As a shopper I want to sort the list of available photographs
+- As a shopper I want to purchase and download the photographs available on Cassandra
+- As a shopper I want to purchase a monthly subscription and download an unlimited number of photographs available on Cassandra
 
 ## Features
 
@@ -55,8 +48,7 @@ Finally we have the login and logout functionalities which give acces to other o
 - Feature 8 A place where superusers can upload photos with easy navigatgion
 
 ### Features Left to Implement
-- Feature to pay monthly with stripe (TBA)
-- Upgraded user interface which impliments  gsap technology animations 
+- Upgraded user interface which impliments gsap technology animations 
 - Add a section where users can favorite a photo and download a watermarked image (similar to amazon.com functionality)
 - Form validation to return error message when registration form is not completed properly
 - send automatic followup marketing email content to all subscibers, providing deals of the week through a blog page intergration for additinal user engagement
@@ -89,22 +81,28 @@ The testing process for this project was ongoing throughout, I made use of unit 
     3. Try to submit the form with an invalid email address and verify that a relevant error message appears
     4. Try to submit the form with all inputs valid and verify that a success message appears
 2. Login/Logout
-    1.Confirm that login works and login validation message is displayed on the home page
-    2.Try access profile without logining in
-    3.Try to fill out registration form with incomplete fields and verify it does not create a user account
-    4.Try to logout and login using and different password but same username and verify that display message is; your password is incorrect!
-3.Registration
+    1. Confirm that login works and login validation message is displayed on the home page
+    2. Try access profile without logining in
+    3. Try to fill out registration form with incomplete fields and verify it does not create a user account
+    4. Try to logout and login using and different password but same username and verify that display message is; your password is incorrect!
+3. Registration
     1. Try to see if I can register without filling the form and verify its not possible by submiting
     2. Try to register again if I already have an account
-4.Photos
-    1.Try to submit a incomplete photo form verify it doesn't submit
-    2.Try to unsubmit my photo by going back on the page link (browser navigation)
-5.Edit profile
-    1.Try Django templating form, verify it is updating registration information on click of submit
-    2.Try user profile and make sure photo information and user information are the same 
-    3.Verify user profile is being saved inside the Django admin panel
-6.Search
+4. Photos
+    1. Try to submit a incomplete photo form verify it doesn't submit
+    2. Try to unsubmit my photo by going back on the page link (browser navigation)
+5. Edit profile
+    1. Try Django templating form, verify it is updating registration information on click of submit
+    2. Try user profile and make sure photo information and user information are the same 
+    3. Verify user profile is being saved inside the Django admin panel
+6. Search
     1.Try the filtered search feature by category.
+7. Purchase and Subscription
+    1. Try to purhcase a photograph with invalid credit card.
+    2. Try to purchase a photograph with valid credit card.
+    3. Try to purhcase a subscription with invalid credit card.
+    4. Try to purchase a subscription with valid credit card.
+
 
 I have also tested my project on various screen sizes from a laptop to a desktop.Ensuring that bootstraps intelligent sizing features have adjusted the page size.
 Everything is able to collapse neatly when on a phone screen to yield a functional user interface wich cleanly represent the e-commerce brand.
@@ -137,7 +135,7 @@ I would also like to credit the stackoverflow community for any methods and
 code snippets used, it was a really awesome resource to roll up my sleeves and 
 learn on the website.
 I would also like to credit the Code Institue, which provided the basis of the logic and design via Boutique Ado.
-I would also like to credit the Django Tutorial // Build a Video Subscription Website - JustDjango, which provided a lot of guidance to implement the membership portion of the site.
+I would also like to credit the Django Tutorial // Build a Video Subscription Website - JustDjango, which provided a lot of guidance to implement the membership portion of the site. <a href="https://www.youtube.com/watch?v=Mw__Pw1iGgA">Part 1</a>, <a href="https://www.youtube.com/watch?v=Bq5lR5WQNOw">Part 2</a> , and <a href="https://www.youtube.com/watch?v=tkQafmnBKqk&t=286s">Part 3</a>. 
 ### Content
 - The text for all the paragraphs was inspired by:
 - https://www.chapters.indigo.ca/en-ca/

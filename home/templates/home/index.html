@@ -35,6 +35,9 @@
                     <a href="{% url 'product_detail' product.id %}">
                         <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
                     </a>
+                    {% if profile.has_paid %}
+                    <a href="{{ product.image.url }}" download="{{ product.image.url }}">Download</a>
+                    {% endif %}
                     {% else %}
                     <a href="{% url 'product_detail' product.id %}">
                         <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
