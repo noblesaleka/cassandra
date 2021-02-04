@@ -39,6 +39,8 @@ The categories page is further broken down into several different genres that th
 Users also have the option to purhcase an unlimited plan whereby they have access to unlimited downloads for a monthly fee of $10 USD.
 Finally we have the login and logout functionalities which give acces to other options, such as view their previous orders and redownload their files.
 
+
+
 ### Existing Features
 - Feature 1 - allows users to preview photos from various photographers for sale
 - Feature 2 allows users to browse and search, for a particular photo throughout various genres
