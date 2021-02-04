@@ -101,6 +101,7 @@ def checkout(request):
                 'street_address1': profile.default_street_address1,
                 'street_address2': profile.default_street_address2,
                 'default_province_or_state': profile.default_province_or_state,
+                'email': request.user.email,
             })
         except UserProfile.DoesNotExist:
             order_form = OrderForm()
@@ -128,15 +129,6 @@ def card(request):
     automatic = request.POST['automatic']
     stripe.api_key = stripe_secret_key
     pid = request.POST.get('client_secret').split('_secret')[0]
-
-    print('payment_intent_id')
-    print(payment_intent_id)
-    print('payment_method_id')
-    print(payment_method_id)
-    print('stripe_plan_id')
-    print(stripe_plan_id)
-    print('automatic')
-    print(automatic)
 
     if automatic == 'Y':
         customer = stripe.Customer.create(
