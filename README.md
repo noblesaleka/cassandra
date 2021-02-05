@@ -48,6 +48,7 @@ Finally we have the login and logout functionalities which give acces to other o
 - Feature 4 allows users to view the price of the current photo they are previewing
 - Feature 5 allows users to have an acccount in order to track their purchases 
 - Feature 8 A place where superusers can upload photos with easy navigatgion
+- Feature 9 allows users to have unlimited downloads if a monthly subscription is purchased
 
 ### Features Left to Implement
 - Upgraded user interface which impliments gsap technology animations 
@@ -117,7 +118,7 @@ Here is a list of bugs encountered and their solutions during the development pr
 
 3. error - index not found, caused by deleting incorrect columns
 
-4. error - major error server 500 in heroku - rolled back to previous checkpoint without functionalities. Unable to correct the subscription piece in Heroku - rolled back to previous checkpoint to show working site with limited functionalities.
+4. error - major error server 500 in heroku - rolled back to previous checkpoint without functionalities. Heroku database needed migration.
 
 
 ## Deployment
