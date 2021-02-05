@@ -40,7 +40,6 @@ class StripeWH_Handler:
         """
         Handle a payment_intent.succeeded webhook event
         """
-        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
