@@ -68,7 +68,7 @@
                         <p class="small mb-0">{{ item.quantity }} @ ${{ item.product.price }} each</p>
                         {% if item.product.image %}
                         <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.title }}">
-                        <a href="{{ item.product.image.url }}" download="{{ item.product.image.url }}">Download</a>
+                        <a href="{{ item.product.image.url }}" download="{{ item.product.image.url }}" download>Download</a>
                         {% else %}
                         <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png">
                         {% endif %}
